@@ -1,11 +1,8 @@
 pipeline {
     agent {
-        docker {
-            image 'centos'
-            label 'generic'
-        
-        }
-    }
+        dockerfile true
+        label 'generic'
+    }      
     stages {
         stage("Run Hello World!") {
             steps {
@@ -13,6 +10,13 @@ pipeline {
                     python helloworld.py
                     """
             } //steps
+        }
+        stage("Test requests") {
+            steps {
+                sh """
+                pyton requestgoogle.py
+                """
+            }
         }
     }
 }
