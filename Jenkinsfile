@@ -1,7 +1,7 @@
 pipeline {
     agent {
         dockerfile true
-        label 'generic'
+
     }      
     stages {
         stage("Run Hello World!") {
